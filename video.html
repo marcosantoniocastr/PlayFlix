@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Videos</title>
+    <style type="text/css" media="all">
+        body {
+            background-color: #141414;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        video {
+            
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <video id="reproductorVideo" controls autoplay>
+        <source src="interestelar.mp4" type="video/mp4">
+        Tu navegador no soporta la etiqueta de video.
+    </video>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var video = document.getElementById('reproductorVideo');
+
+            // Función para rotar el video horizontalmente
+            function rotarVideo() {
+                video.style.transform = 'rotate(90deg)';
+            }
+
+            // Solicitar pantalla completa cuando el video esté cargado
+            video.addEventListener('loadedmetadata', function() {
+                rotarVideo();
+                video.requestFullscreen().catch(function(error) {
+                    console.error('Error al intentar entrar en modo pantalla completa:', error);
+                });
+            });
+
+            // Puedes agregar más funcionalidades según tus necesidades
+        });
+    </script>
+</body>
+</html>
